@@ -8,13 +8,21 @@ app.set('view engine','ejs')
 app.use(Express.static(__dirname+"/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-const   EmployeeModel=Mongoose.model("empdetails",{
+const   CinemaModel=Mongoose.model("cinemadetails",{
     name:String,
-    des:String,
-    salary:String
+    producer:String,
+    director:String,
+    actor:String,
+    actress:String,
+    release_year:String,
+    language:String,
+    editor:String,
+    camera:String,
+    distributor:String
+
     
 });
-Mongoose.connect("mongodb+srv://sharmi1998:SHARMI438@</password>@clusterdata-rwxfj.mongodb.net/test?retryWrites=true&w=majority")
+Mongoose.connect("mongodb://localhost:27017/cinemadb")
 app.get('/',(req,res)=>{
     res.render('home')
     
@@ -23,8 +31,8 @@ app.post('/read',(req,res)=>{
 
     console.log('test')
     console.log(req.body)
-    var employee=new EmployeeModel(req.body);
-    var result=employee.save((error)=>{
+    var cinema=new CinemaModel(req.body);
+    var result=cinema.save((error)=>{
         if(error){
             throw error;
          // res.send(error)
@@ -40,7 +48,7 @@ app.post('/read',(req,res)=>{
 
 app.get('/viewall',(req,res)=>{
 
-result=EmployeeModel.find((error,data)=>{
+result=CinemaModel.find((error,data)=>{
     if(error){
         throw error;
     }
@@ -61,10 +69,10 @@ request(viewall,(error,response,body)=>{
 
 
 })
-//to filter datas of single employee
-app.get('/getAempApi/:Name1',(req,res)=>{
-    var ename=req.params.Name1;
-    EmployeeModel.find({name:ename},(error,data)=>{
+//to filter datas of single cinema
+app.get('/getAcineApi/:Name1',(req,res)=>{
+    var cname=req.params.Name1;
+    EmployeeModel.find({name:cname},(error,data)=>{
         if(error){
             throw error;
         }

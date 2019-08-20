@@ -9,14 +9,14 @@
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">add employee</a>
+                <a class="navbar-brand" href="/">add cinema</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/view">view employee <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="/view">view cinemas <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                     <a class="nav-link" href="/search">search<span class="sr-only">(current)</span></a>
@@ -29,9 +29,16 @@
             <div class="col">
                     <form action="/read" method="POST">
                 <table class="table">
-                        <tr><td>emp name</td><td><input type="text" name="name"></td></tr>
-                        <tr><td>emp designation</td><td><input type="text" name="des"></td></tr>
-                        <tr><td>emp salary</td><td><input type="text" name="salary"></td></tr> 
+                        <tr><td>name</td><td><input type="text" name="name"></td></tr>
+                        <tr><td>producer</td><td><input type="text" name="pro"></td></tr>
+                        <tr><td>director</td><td><input type="text" name="dir"></td></tr>
+                        <tr><td>actor</td><td><input type="text" name="act"></td></tr>
+                        <tr><td>actress</td><td><input type="text" name="actr"></td></tr>
+                        <tr><td>releaseYear</td><td><input type="text" name="year"></td></tr>
+                        <tr><td>language</td><td><input type="text" name="lan"></td></tr>
+                        <tr><td>editor</td><td><input type="text" name="edi"></td></tr>
+                        <tr><td>camera</td><td><input type="text" name="cam"></td></tr>
+                        <tr><td>distributor</td><td><input type="text" name="dis"></td></tr>
                         <tr><td></td><td><button class="btn btn-success"type="submit">submit</button></td></tr> 
                
                     </table>
