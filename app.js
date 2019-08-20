@@ -14,7 +14,7 @@ const   EmployeeModel=Mongoose.model("empdetails",{
     salary:String
     
 });
-Mongoose.connect("mongodb://localhost:27017/empdb")
+Mongoose.connect("mongodb+srv://sharmi1998:SHARMI438@</password>@clusterdata-rwxfj.mongodb.net/test?retryWrites=true&w=majority")
 app.get('/',(req,res)=>{
     res.render('home')
     
@@ -76,8 +76,8 @@ app.get('/getAempApi/:Name1',(req,res)=>{
 app.get('/search',(req,res)=>{
     res.render('search')
 })
-app.get('/searchapi',(req,res)=>{
-    var
+app.get('/searchapi/ename',(req,res)=>{
+    var id=req.params.ename;
 })
 app.listen(process.env.PORT || 3000,()=>{
     console.log("Server is running")
