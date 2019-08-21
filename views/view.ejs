@@ -38,14 +38,26 @@
                                 <th scope="col">director</th>
                                 <th scope="col">actor</th>
                                 <th scope="col">actress</th>
+                                <th scope="col">release</th>
+                                <th scope="col">language</th>
+                                <th scope="col">editor</th>
+                                <th scope="col">camera</th>
+                                <th scope="col">distributor</th>
                               </tr>
                             </thead>
-                            <%for(var i=0;i<data.length;i++){%>
+                            <%for (var i=0;i<data.length;i++) {%>
                             <tbody>
                               <tr>
                                 <td><%=data[i].name%></td>
-                                <td><%=data[i].%></td>
-                                <td><%=data[i].salary%></td>
+                                <td><%=data[i].pro%></td>
+                                <td><%=data[i].dir%></td>
+                                <td><%=data[i].act%></td>
+                                <td><%=data[i].actr%></td>
+                                <td><%=data[i].year%></td>
+                                <td><%=data[i].lan%></td>
+                                <td><%=data[i].edi%></td>
+                                <td><%=data[i].cam%></td>
+                                <td><%=data[i].dis%></td>
                               </tr>
                 </tbody>
             <%}%>

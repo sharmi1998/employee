@@ -3,22 +3,21 @@ var bodyParser=require('body-parser')
 var app=new Express()
 var request=require('request')
 const Mongoose=require('mongoose');
-const viewall="http://localhost:3000/viewall"
 app.set('view engine','ejs')
 app.use(Express.static(__dirname+"/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-const   CinemaModel=Mongoose.model("cinemadetails",{
+const   CinemaModel=Mongoose.model("cinemas",{
     name:String,
-    producer:String,
-    director:String,
-    actor:String,
-    actress:String,
-    release_year:String,
-    language:String,
-    editor:String,
-    camera:String,
-    distributor:String
+    pro:String,
+    dir:String,
+    act:String,
+    actr:String,
+    year:String,
+    lan:String,
+    edi:String,
+    cam:String,
+    dis:String
 
     
 });
@@ -35,7 +34,7 @@ app.post('/read',(req,res)=>{
     var result=cinema.save((error)=>{
         if(error){
             throw error;
-         // res.send(error)
+         
         }
         else{
             res.send("<script> window.location.href='/' </script>");
@@ -58,21 +57,20 @@ result=CinemaModel.find((error,data)=>{
 })
 
 })
+const viewall="http://localhost:3002/viewall"
+
 app.get('/view',(req,res)=>{
-request(viewall,(error,response,body)=>{
-    var data=JSON.parse(body);
-    console.log(data)
-    res.render('view',{'data':data})
-})
-    //res.render('view',)
-
-
-
-})
+    request(viewall,(error,response,body)=>{
+        var data=JSON.parse(body);
+        console.log(data)
+        res.render('view',{'data':data})
+    })
+    
+    })
 //to filter datas of single cinema
 app.get('/getAcineApi/:Name1',(req,res)=>{
     var cname=req.params.Name1;
-    EmployeeModel.find({name:cname},(error,data)=>{
+    CinemaModel.find({name:cname},(error,data)=>{
         if(error){
             throw error;
         }
@@ -81,12 +79,21 @@ app.get('/getAcineApi/:Name1',(req,res)=>{
         }
     })
 })
+
 app.get('/search',(req,res)=>{
     res.render('search')
 })
-app.get('/searchapi/ename',(req,res)=>{
-    var id=req.params.ename;
+app.get('/searchapi/name',(req,res)=>{
+    var cname=req.body.name;
+    CinemaModel.find({name:cname},(error,data)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            res.send(data)
+        } 
+    })
 })
-app.listen(process.env.PORT || 3000,()=>{
+app.listen(process.env.PORT || 3002,()=>{
     console.log("Server is running")
 })
